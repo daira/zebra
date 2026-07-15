@@ -475,7 +475,10 @@ mod tests {
             ACTIVE_HEIGHT,
             recent_block_data(&network),
         );
-        assert_eq!(at_threshold.expected_difficulty, CompactDifficulty::default());
+        assert_eq!(
+            at_threshold.expected_difficulty,
+            CompactDifficulty::default()
+        );
 
         let mut past_threshold = chain_info(PREV + GAP + 1);
         adjust_difficulty_and_time_for_testnet(
@@ -507,7 +510,10 @@ mod tests {
         assert_eq!(result.expected_difficulty, CompactDifficulty::default());
         assert_eq!(result.cur_time, DateTime32::from(cur));
         assert_eq!(result.min_time, DateTime32::from(PREV - 100));
-        assert_eq!(result.max_time, DateTime32::from(PREV + BLOCK_MAX_TIME_SINCE_MEDIAN));
+        assert_eq!(
+            result.max_time,
+            DateTime32::from(PREV + BLOCK_MAX_TIME_SINCE_MEDIAN)
+        );
     }
 
     /// Below `TESTNET_MINIMUM_DIFFICULTY_START_HEIGHT` (299188) the rule is inactive, so the
@@ -527,6 +533,9 @@ mod tests {
 
         assert_eq!(result.expected_difficulty, CompactDifficulty::default());
         assert_eq!(result.cur_time, DateTime32::from(cur));
-        assert_eq!(result.max_time, DateTime32::from(PREV + BLOCK_MAX_TIME_SINCE_MEDIAN));
+        assert_eq!(
+            result.max_time,
+            DateTime32::from(PREV + BLOCK_MAX_TIME_SINCE_MEDIAN)
+        );
     }
 }
